@@ -7,8 +7,9 @@
 
 
 #include <string>
+#include "ISerializable.h"
 
-class Person {
+class Person : public ISerializable{
 private:
     int id{};
     std::string name;
@@ -28,6 +29,8 @@ public:
     void setName(const std::string &name);
 
     virtual std::string toString() const; // virtual method
+
+    json to_json() const override;
 };
 
 

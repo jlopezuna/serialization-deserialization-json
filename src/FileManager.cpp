@@ -10,11 +10,8 @@
  * @param _json the Json Object
  * @param _person the Model
  */
-void to_json(json &_json, const Person &_person) {
-    _json = json{
-            {"id",   _person.getId()},
-            {"name", _person.getName()},
-    };
+void to_json(json &_json, const ISerializable &_serializable) {
+    _json = _serializable.to_json();
 }
 
 /**
