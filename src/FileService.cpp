@@ -12,7 +12,7 @@ FileService::~FileService() {
 
 }
 
-std::string FileService::read(std::string fileName) const {
+std::string FileService::read(std::string fileName) {
     std::ifstream fs{ fileName };
     std::string stringRead;
 

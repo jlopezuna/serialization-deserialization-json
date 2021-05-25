@@ -14,9 +14,9 @@ public:
 
     virtual ~FileService();
 
-    std::string read(std::string fileName) const;
+    static std::string read(std::string fileName);
 
-    void write(std::string fileName, std::string data);
+    static void write(std::string fileName, std::string data);
 };
 
 
