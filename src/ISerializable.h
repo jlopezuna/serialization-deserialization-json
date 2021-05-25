@@ -11,10 +11,29 @@
 using namespace std;
 using nlohmann::json;
 
+
+namespace nlohmann{
+
+}
+
 class ISerializable {
 
 public:
-    virtual json to_json() const = 0;
+    /**
+ * Custom to_json method automatically called.
+ * @param _json the Json Object
+ * @param _person the Model
+ */
+    template<typename T>
+    virtual static void to_json(json &_json, const T &_t) = 0;
+
+/**
+ * Custom from_json method automatically called.
+ * @param _json  the Json Object
+ * @param _person the Model
+ */
+    template<typename T>
+    void from_json(const json &_json, T &_person) ;
 };
 
 

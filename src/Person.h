@@ -5,11 +5,14 @@
 #ifndef SERIALIZATION_JSON_PERSON_H
 #define SERIALIZATION_JSON_PERSON_H
 
-
+#include <../lib/nlohmann/json.hpp>
 #include <string>
-#include "ISerializable.h"
 
-class Person : public ISerializable{
+using namespace std;
+using nlohmann::json;
+
+
+class Person{
 private:
     int id{};
     std::string name;
@@ -30,8 +33,14 @@ public:
 
     virtual std::string toString() const; // virtual method
 
-    json to_json() const override;
-};
+    void to_json(json& j, const Person& p) {
+        j = json{{"name", p.name}, {"id", p.id}};
+    }
 
+    void from_json(const json& j, Person& p) {
+        j.at("name").get_to(p.name);
+        j.at("id").get_to(p.id);
+    }
+};
 
 #endif //SERIALIZATION_JSON_PERSON_H

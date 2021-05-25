@@ -34,13 +34,4 @@ std::string Person::toString() const {
     return output.str();
 }
 
-json Person::to_json() const {
-    json jsonObj = json{
-            {"id",  getId()},
-            {"name", getName()},
-            {"test", getName()}
-    };
-    return jsonObj;
-}
-
 Person::~Person() = default;
