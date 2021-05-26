@@ -5,14 +5,15 @@
 #ifndef SERIALIZATION_JSON_PERSON_H
 #define SERIALIZATION_JSON_PERSON_H
 
-
 #include <string>
-#include "ISerializable.h"
+#include "Animal.h"
 
-class Person : public ISerializable{
+
+class Person {
 private:
     int id{};
     std::string name;
+    Animal *pet;
 public:
     Person();
 
@@ -28,9 +29,12 @@ public:
 
     void setName(const std::string &name);
 
+    Animal *getPet() const;
+
+    void setPet(Animal *pet);
+
     virtual std::string toString() const; // virtual method
 
-    json to_json() const override;
 };
 
 

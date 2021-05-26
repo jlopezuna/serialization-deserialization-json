@@ -10,8 +10,16 @@
  * @param _json the Json Object
  * @param _person the Model
  */
-void to_json(json &_json, const ISerializable &_serializable) {
-    _json = _serializable.to_json();
+void to_json(json &_json, const Person &_person) {
+    _json = json {
+            {"id",  _person.getId()},
+            {"name", _person.getName()},
+            {"pet", {
+                {"name",_person.getPet()->getName()},
+                {"kind",_person.getPet()->getType()}
+            }
+            }
+    };
 }
 
 /**
@@ -20,8 +28,13 @@ void to_json(json &_json, const ISerializable &_serializable) {
  * @param _person the Model
  */
 void from_json(const json &_json, Person &_person) {
+    auto *pet = new Animal();
     _person.setId(_json.at("id").get<int>());
     _person.setName(_json.at("name").get<std::string>());
+    pet->setName(_json.at("pet").at("name").get<std::string>());
+    pet->setName(_json.at("pet").at("kind").get<std::string>());
+    _person.setPet(pet);
+
 }
 
 /**

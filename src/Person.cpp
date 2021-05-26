@@ -29,18 +29,19 @@ void Person::setName(const std::string &name) {
 std::string Person::toString() const {
     std::ostringstream output;
     output << "Person id: " << getId()
-           << ", Name: " << getName();
+           << ", Name: " << getName()
+           << ", Pet: " << pet->toString();
 
     return output.str();
 }
 
-json Person::to_json() const {
-    json jsonObj = json{
-            {"id",  getId()},
-            {"name", getName()},
-            {"test", getName()}
-    };
-    return jsonObj;
+Animal *Person::getPet() const {
+    return pet;
+}
+
+void Person::setPet(Animal *pet) {
+    Person::pet = pet;
 }
 
 Person::~Person() = default;
+

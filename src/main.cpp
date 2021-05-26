@@ -19,6 +19,11 @@ int main() {
     vector<Person> personList;
     Person person1 = Person(1, "Mike");
     Person person2 = Person(2, "Carlos");
+    Animal *pet1 = new Animal("Pipi","Bird");
+    Animal *pet2 = new Animal("Flufy","cat");
+
+    person1.setPet(pet1);
+    person2.setPet(pet2);
 
     personList.push_back(person1);
     personList.push_back(person2);

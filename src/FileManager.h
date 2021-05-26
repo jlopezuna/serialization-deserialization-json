@@ -9,6 +9,7 @@
 
 #include <string>
 #include "Person.h"
+#include "Animal.h"
 
 using namespace std;
 using nlohmann::json;
@@ -18,6 +19,4 @@ public:
     static string serialize(const vector<Person>& _personList);
     static vector<Person> deserialize(const string& _data);
 };
-
-
 #endif //SERIALIZATION_JSON_FILEMANAGER_H
